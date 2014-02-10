@@ -1,4 +1,5 @@
 # makes the KNN submission
+# from kaggle.com tutorial
 
 library(FNN)
 
