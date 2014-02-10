@@ -1,0 +1,6 @@
+Something you should know about KNN:
+1. KNN is not K-means. I will study K-means next time.
+2. KNN can be used as a classifier and a regression method.
+3. As a classifier, the key point is to calculate the distance/metric, in order to locate the k nearest neighbors. 
+4. For the time complexity issue, scientists invent multiple ways to increase the efficiency.  Famous methods include brute search (worst), cover tree, k-d tree, etc.
+5. Advantage and Disadvantage of KNN.
