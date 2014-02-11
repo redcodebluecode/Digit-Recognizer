@@ -38,11 +38,39 @@ Each tree is constructed using the following algorithm:
 For prediction a new sample is pushed down the tree. It is assigned the label of the training sample in the terminal node it ends up in. This procedure is iterated over all trees in the ensemble, and the mode vote of all trees is reported as the random forest prediction.
 
 4. Advantages
+(1) Random Forests are a wonderful tool for making predictions considering they do not overfit because of the law of large numbers. Introducing the right kind of randomness makes them accurate classifiers and regressors.
+(2) Single decision trees often have high variance or high bias. Random Forests attempts to mitigate the problems of high variance and high bias by averaging to find a natural balance between the two extremes.
+(3) Considering that Random Forests have few parameters to tune and can be used simply with default parameter settings, they are a simple tool to use without having a model or to produce a reasonable model fast and efficiently.
+(4) Random Forests are easy to learn and use for both professionals and lay people - with little research and programming required and may be used by folks without a strong statistical background. Simply put, you can safely make more accurate predictions without most basic mistakes common to other methods (They are able to deal with unbalanced and missing data).
+(5) Accuracy.
+(6) Runs efficiently on large data bases.  
+(7) Handles thousands of input variables without variable deletion.
+(8) Gives estimates of what variables are important in the classification.
+(9) Generates an internal unbiased estimate of the generalization error as the forest building progresses.
+(10) Provides effective methods for estimating missing data.
+(11) Maintains accuracy when a large proportion of the data are missing.
+(12) Provides methods for balancing error in class population unbalanced data sets.
+(13) Generated forests can be saved for future use on other data.
+(14) Prototypes are computed that give information about the relation between the variables and the classification.
+(15) Computes proximities between pairs of cases that can be used in clustering, locating outliers, or (by scaling) give interesting views of the data.
+(16) Capabilities of the above can be extended to unlabeled data, leading to unsupervised clustering, data views and outlier detection.
+(17) Offers an experimental method for detecting variable interactions.
+
 5. Disadvantages
-6. Improvement
+(1) With a large number of predictors, the eligible predictor set will be quite different from node to node.
+(2) The greater the inter-tree correlation, the greater the random forest error rate, so one pressure on the model is to have the trees as uncorrelated as possible. (Solution: As m goes down, both inter-tree correlation and the strength of individual trees go down. So some optimal value of m must be discovered.)
+(3) When used for regression they cannot predict beyond the range in the training data, and that they may over-fit data sets that are particularly noisy. Of course, the best test of any algorithm is how well it works upon your own data set.
+
+6. Improvement/Variants
+Instead of decision trees, linear models have been proposed and evaluated as base estimators in random forests, in particular multinomial logistic regression and naive Bayes classifiers.
 
 7. Explanation in layman term:
 http://qr.ae/hf1Jp
 
 8. The original paper is from Leo Breiman:
 http://scholar.google.com/citations?view_op=view_citation&hl=en&user=mXSv_1UAAAAJ&citation_for_view=mXSv_1UAAAAJ:d1gkVwhDpl0C
+
+9. Other sources:
+http://www.whrc.org/education/indonesia/pdf/DecisionTrees_RandomForest_v2.pdf
+
+http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm
