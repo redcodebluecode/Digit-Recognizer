@@ -1,2 +1,46 @@
 Something you should know about Random Forest
 
+1. Brief Introduction
+"Random forests are an ensemble learning method for classification (and regression) that operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes output by individual trees." -- http://en.wikipedia.org/wiki/Random_forest
+
+2. Objects
+(1) Supervised learning.
+(2) It is better to think of random forests as a framework rather than as a particular model. 
+
+The framework consists of several interchangeable parts which can be mixed and matched to create a large number of particular models, all built around the same central theme. Constructing a model in this framework requires making several choices:
+i. The shape of the decision to use in each node.
+ii. The type of predictor to use in each leaf.
+iii. The splitting objective to optimize in each node.
+iv. The method for injecting randomness into the trees.
+
+The simplest type of decision to make at each node is to apply a threshold to a single dimension of the input. This is a very common choice and leads to trees that partition the space into hyper-rectangular regions. However, other decision shapes, such as splitting a node using linear or quadratic decisions are also possible.
+
+Leaf predictors determine how a prediction is made for a point, given that it falls in a particular cell of the space partition defined by the tree. Simple and common choices here include using a histogram for real valued outputs, or constant predictors for categorical data.
+
+In principle there is no restriction on the type of predictor that can be used, for example one could fit a Support Vector Machine or a spline in each leaf; however, in practice this is uncommon. If the tree is large then each leaf may have very few points making it difficult to fit complex models; also, the tree growing procedure itself may be complicated if it is difficult to compute the splitting objective based on a complex leaf model. However, many of the more exotic generalizations of random forests, e.g. to density or manifold estimation, rely on replacing the constant leaf model.
+
+The splitting objective is a function which is used to rank candidate splits of a leaf as the tree is being grown. This is commonly based on an impurity measure, such as the information gain or the Gini gain.
+
+The method for injecting randomness into each tree is the component of the random forests framework which affords the most freedom to model designers. Breiman's original algorithm achieves this in two ways:
+Each tree is trained on a bootstrapped sample of the original data set.
+Each time a leaf is split, only a randomly chosen subset of the dimensions are considered for splitting.
+
+3. Algorithm
+----------------- Breiman's Algorithm -------------------
+Each tree is constructed using the following algorithm:
+
+(1) Let the number of training cases be N, and the number of variables in the classifier be M.
+(2) We are told the number m of input variables to be used to determine the decision at a node of the tree; m should be much less than M.
+(3) Choose a training set for this tree by choosing n times with replacement from all N available training cases (i.e., take a bootstrap sample). Use the rest of the cases to estimate the error of the tree, by predicting their classes.
+(4) For each node of the tree, randomly choose m (out of M) variables on which to search for the best split. Calculate the best split based on these m variables in the training set. Base the decision at that node using the best split.
+(5) Each tree is fully grown and not pruned (as may be done in constructing a normal tree classifier).
+
+For prediction a new sample is pushed down the tree. It is assigned the label of the training sample in the terminal node it ends up in. This procedure is iterated over all trees in the ensemble, and the mode vote of all trees is reported as the random forest prediction.
+
+4. 算法优点，
+5. 算法缺点，
+6. 算法改进
+7. Explanation in layman term:
+http://qr.ae/hf1Jp
+8. The original paper is from Leo Breiman:
+http://scholar.google.com/citations?view_op=view_citation&hl=en&user=mXSv_1UAAAAJ&citation_for_view=mXSv_1UAAAAJ:d1gkVwhDpl0C
