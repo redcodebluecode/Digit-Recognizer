@@ -8,10 +8,10 @@ Something you should know about Random Forest
 (2) It is better to think of random forests as a framework rather than as a particular model. 
 
 The framework consists of several interchangeable parts which can be mixed and matched to create a large number of particular models, all built around the same central theme. Constructing a model in this framework requires making several choices:
-i. The shape of the decision to use in each node.
-ii. The type of predictor to use in each leaf.
-iii. The splitting objective to optimize in each node.
-iv. The method for injecting randomness into the trees.
+i). The shape of the decision to use in each node.
+ii). The type of predictor to use in each leaf.
+iii). The splitting objective to optimize in each node.
+iv). The method for injecting randomness into the trees.
 
 The simplest type of decision to make at each node is to apply a threshold to a single dimension of the input. This is a very common choice and leads to trees that partition the space into hyper-rectangular regions. However, other decision shapes, such as splitting a node using linear or quadratic decisions are also possible.
 
@@ -37,10 +37,12 @@ Each tree is constructed using the following algorithm:
 
 For prediction a new sample is pushed down the tree. It is assigned the label of the training sample in the terminal node it ends up in. This procedure is iterated over all trees in the ensemble, and the mode vote of all trees is reported as the random forest prediction.
 
-4. 算法优点，
-5. 算法缺点，
-6. 算法改进
+4. Advantages
+5. Disadvantages
+6. Improvement
+
 7. Explanation in layman term:
 http://qr.ae/hf1Jp
+
 8. The original paper is from Leo Breiman:
 http://scholar.google.com/citations?view_op=view_citation&hl=en&user=mXSv_1UAAAAJ&citation_for_view=mXSv_1UAAAAJ:d1gkVwhDpl0C
